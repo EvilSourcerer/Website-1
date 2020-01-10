@@ -1,10 +1,20 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Typography, Fab, Theme } from '@material-ui/core';
-import { ViewCompact as DashboardIcon, MoneyOff as FreeIcon } from '@material-ui/icons';
+import {
+    ViewCompact as DashboardIcon,
+    MoneyOff as FreeIcon,
+    Loop,
+    Code,
+    Info,
+    Fingerprint,
+    Favorite,
+    Call
+} from '@material-ui/icons';
 
 import topography from './topography.svg';
 import { AlteningDark } from '../theme/AlteningDark';
+import FeaturesGrid from './FeaturesGrid';
 
 const mainPageStyles = makeStyles((theme: Theme) => ({
     jumbotron: {
@@ -18,7 +28,15 @@ const mainPageStyles = makeStyles((theme: Theme) => ({
         paddingTop: theme.spacing(2),
         paddingLeft: '30%',
         paddingRight: '30%',
-        textAlign: 'center'
+        textAlign: 'center',
+        paddingBottom: '100px',
+        clipPath: 'polygon(0 0, 1600px 0, 1600px 87%, 0 100%)'
+    },
+    features: {
+        backgroundColor: AlteningDark[600],
+        paddingTop: theme.spacing(2),
+        paddingLeft: '20%',
+        paddingRight: '20%'
     },
     jumboTitle: {
         paddingTop: '80px',
@@ -32,6 +50,9 @@ const mainPageStyles = makeStyles((theme: Theme) => ({
     },
     fabIcon: {
         marginRight: theme.spacing(1)
+    },
+    featureIcon: {
+        fontSize: 81
     }
 }));
 
@@ -98,6 +119,45 @@ const MainPage: React.FC = () => {
                     <b> custom authenticator and switch to our servers.</b> From there you will be able to enter the
                     Tokens into your Minecraft launcher just like a normal login and it will let you use your new alt!
                 </Typography>
+            </div>
+            <div className={classes.features}>
+                <FeaturesGrid
+                    features={[
+                        {
+                            icon: <Loop className={classes.featureIcon} />,
+                            name: 'Unlimited Alts',
+                            description: 'You can make a ridiculous amounts of unique alts every day.'
+                        },
+                        {
+                            icon: <Code className={classes.featureIcon} />,
+                            name: 'Alt Checking',
+                            description: 'Each account is checked before being generated.'
+                        },
+                        {
+                            icon: <Info className={classes.featureIcon} />,
+                            name: 'Alt Information',
+                            description:
+                                'When generating an alt you will be provided with such information as Username, Skin and Capes (if any). In the future we will also provide ban information.'
+                        },
+                        {
+                            icon: <Fingerprint className={classes.featureIcon} />,
+                            name: 'Private Alts',
+                            description:
+                                'Premium users can mark up to 10 alts as private, meaning they will not be generated to anybody else.'
+                        },
+                        {
+                            icon: <Favorite className={classes.featureIcon} />,
+                            name: 'Favorite Alts',
+                            description:
+                                'Premium users can mark up to 10 alts as favorite, meaning they will not expire.'
+                        },
+                        {
+                            icon: <Call className={classes.featureIcon} />,
+                            name: 'Support',
+                            description: 'We have extremely fast support via discord if you ever need assistance.'
+                        }
+                    ]}
+                />
             </div>
         </>
     );
