@@ -14,7 +14,7 @@ interface Props {
 
 const useFeatureGridStyles = makeStyles((theme: Theme) => ({
     feature: {
-        backgroundColor: AlteningDark[500],
+        backgroundColor: theme.palette.type === 'light' ? theme.palette.background.paper : AlteningDark[500],
         paddingTop: theme.spacing(2),
         paddingBottom: theme.spacing(2),
         paddingLeft: theme.spacing(2),

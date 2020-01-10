@@ -15,11 +15,13 @@ import {
 import topography from './topography.svg';
 import { AlteningDark } from '../theme/AlteningDark';
 import FeaturesGrid from './FeaturesGrid';
+import { useHistory } from 'react-router-dom';
 
 const mainPageStyles = makeStyles((theme: Theme) => ({
     jumbotron: {
         backgroundImage: `url(${topography})`,
-        backgroundColor: AlteningDark[600],
+        backgroundColor: theme.palette.type === 'light' ? theme.palette.background.default : AlteningDark[600],
+        backgroundBlendMode: theme.palette.type === 'light' ? 'difference' : undefined,
         clipPath: 'polygon(0 0, 1600px 0, 1600px 87%, 0 100%)',
         height: '800px',
         width: '100%'
@@ -33,7 +35,7 @@ const mainPageStyles = makeStyles((theme: Theme) => ({
         clipPath: 'polygon(0 0, 1600px 0, 1600px 87%, 0 100%)'
     },
     features: {
-        backgroundColor: AlteningDark[600],
+        backgroundColor: theme.palette.type === 'light' ? theme.palette.background.default : AlteningDark[600],
         paddingTop: theme.spacing(2),
         paddingLeft: '15%',
         paddingRight: '15%'
@@ -58,6 +60,15 @@ const mainPageStyles = makeStyles((theme: Theme) => ({
 
 const MainPage: React.FC = () => {
     const classes = mainPageStyles();
+    const history = useHistory();
+
+    const openDashboard = () => {
+        history.push('/dashboard');
+    };
+
+    const openFree = () => {
+        history.push('/free');
+    };
 
     return (
         <>
@@ -66,11 +77,23 @@ const MainPage: React.FC = () => {
                     <Typography variant='h1'>The Altening</Typography>
                     <Typography variant='h2'>A Free Minecraft Account Generator</Typography>
                     <div className={classes.jumboButtons}>
-                        <Fab variant='extended' color='primary' size='large' className={classes.jumboButton}>
+                        <Fab
+                            variant='extended'
+                            color='primary'
+                            size='large'
+                            className={classes.jumboButton}
+                            onClick={openDashboard}
+                        >
                             <DashboardIcon className={classes.fabIcon} />
                             Open Dashboard
                         </Fab>
-                        <Fab variant='extended' color='secondary' size='large' className={classes.jumboButton}>
+                        <Fab
+                            variant='extended'
+                            color='secondary'
+                            size='large'
+                            className={classes.jumboButton}
+                            onClick={openFree}
+                        >
                             <FreeIcon className={classes.fabIcon} />
                             Free Generator
                         </Fab>
