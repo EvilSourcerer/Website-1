@@ -35,8 +35,8 @@ const mainPageStyles = makeStyles((theme: Theme) => ({
     features: {
         backgroundColor: AlteningDark[600],
         paddingTop: theme.spacing(2),
-        paddingLeft: '20%',
-        paddingRight: '20%'
+        paddingLeft: '15%',
+        paddingRight: '15%'
     },
     jumboTitle: {
         paddingTop: '80px',
@@ -52,7 +52,7 @@ const mainPageStyles = makeStyles((theme: Theme) => ({
         marginRight: theme.spacing(1)
     },
     featureIcon: {
-        fontSize: 81
+        fontSize: 'auto'
     }
 }));
 
