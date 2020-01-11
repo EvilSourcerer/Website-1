@@ -31,7 +31,7 @@ const FeaturesGrid: React.FC<Props> = (props: Props) => {
         <Grid container spacing={2} justify='center' direction='row' alignItems='stretch'>
             {props.features.map((feature: Feature) => {
                 return (
-                    <Grid item xs>
+                    <Grid item xs key={feature.name}>
                         <Paper elevation={5} className={classes.feature}>
                             <IconButton>{feature.icon}</IconButton>
                             <Typography variant='h5' align='center'>

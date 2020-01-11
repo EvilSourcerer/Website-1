@@ -22,7 +22,7 @@ const mainPageStyles = makeStyles((theme: Theme) => ({
         backgroundImage: `url(${topography})`,
         backgroundColor: theme.palette.type === 'light' ? theme.palette.background.default : AlteningDark[600],
         backgroundBlendMode: theme.palette.type === 'light' ? 'difference' : undefined,
-        clipPath: 'polygon(0 0, 1600px 0, 1600px 87%, 0 100%)',
+        clipPath: 'polygon(0 0, 100% 0, 100% 87%, 0 100%)',
         height: '800px',
         width: '100%'
     },
